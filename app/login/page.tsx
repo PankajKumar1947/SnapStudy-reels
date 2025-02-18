@@ -1,4 +1,5 @@
 "use client"
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
@@ -13,21 +14,17 @@ const page = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        try {
-            const res = await fetch("/api/auth/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password })
-            })
+        const result = await signIn("credentials", {
+            email,
+            password,
+            redirect: false,
+        });
 
-            if (!res.ok) {
-                setError("Registration Failed");
-                return;
-            }
-
-            router.push("/")
-        } catch (error) {
-            console.log("error")
+        if (result?.error) {
+            setError(result.error);
+        } else {
+            setError("");
+            router.push("/");
         }
     }
     return (
