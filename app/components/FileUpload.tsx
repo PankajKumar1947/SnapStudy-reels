@@ -65,7 +65,7 @@ export default function FileUpload({
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     return (
@@ -76,7 +76,7 @@ export default function FileUpload({
 
                 validateFile={validateFile}
 
-                folder={fileType === "video" ? "video/*" : "image/*"}
+                folder={fileType === "video" ? "videos" : "images"}
 
                 onError={onError}
                 onSuccess={handleSuccess}
