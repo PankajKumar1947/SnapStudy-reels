@@ -3,6 +3,7 @@ import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import Header from '../components/Header';
 
 const page = () => {
     const [email, setEmail] = useState("");
@@ -28,7 +29,9 @@ const page = () => {
         }
     }
     return (
-        <form action="" className='space-y-4 max-w-xl mx-auto border p-6 py-14 rounded-xl overflow-hidden mt-20'>
+        <>
+        <Header />
+            <form action="" className='space-y-4 max-w-xl mx-auto border p-6 py-14 rounded-xl overflow-hidden mt-12'>
             <h2 className='text-xl text-center'>Login</h2>
             <label className="input input-bordered flex items-center gap-2">
                 <svg
@@ -64,6 +67,7 @@ const page = () => {
             </div>
             {error && <p className='text-red-500 text-center'>{error}</p>}
         </form>
+        </>
     )
 }
 

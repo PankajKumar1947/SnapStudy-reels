@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import FileUpload from "./components/FileUpload";
 import Header from "./components/Header";
 import { IKUploadResponse } from "imagekitio-next/dist/types/components/IKUpload/props";
+import UploadVideo from "./components/UploadVideo";
 
 export default function Home() {
   const [videos, setVideos] = useState<IVideo[]>([]);
@@ -34,7 +35,8 @@ export default function Home() {
     <div>
       <Header />
       <div>
-        <FileUpload onSuccess={onSuccess} onProgress={onProgress} fileType="video"/>
+        {/* <FileUpload onSuccess={onSuccess} onProgress={onProgress} fileType="video"/> */}
+        <UploadVideo />
       </div>
     </div >
   );
